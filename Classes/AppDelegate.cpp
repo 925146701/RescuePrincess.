@@ -1,7 +1,10 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+
 
 USING_NS_CC;
+
+#define TARGETHEIGHT 720
+#define TARGETWIDTH 1280
 
 AppDelegate::AppDelegate() {
 
@@ -16,21 +19,31 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLView::create("My Game");
+        glview = GLView::create("RescuePrincess");
+		glview->setFrameSize(640, 360);
         director->setOpenGLView(glview);
     }
+	glview->setViewPortInPoints(0, 0, 640, 360);
+	glview->setDesignResolutionSize(TARGETWIDTH, TARGETHEIGHT, ResolutionPolicy::EXACT_FIT);
 
     // turn on display FPS
-    director->setDisplayStats(false);
+    director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
+
+
+
+	//添加搜索路径,Resources文件夹下自己添加
+	FileUtils::getInstance()->addSearchPath("fonts/");
+
+
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    //auto scene = HelloWorld::createScene();
 
     // run
-    director->runWithScene(scene);
+    director->runWithScene();
 
     return true;
 }

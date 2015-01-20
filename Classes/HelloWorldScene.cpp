@@ -72,11 +72,12 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
-	//SimpleAudioEngine::getInstance()->preloadBackgroundMusic("bgm0.mp3");
+	SimpleAudioEngine::getInstance()->preloadBackgroundMusic("bgm0.mp3");
     //¼ÓÔØ±³¾°ÒôÀÖ
 	SimpleAudioEngine::getInstance()->playBackgroundMusic("bgm0.mp3", true);
 	SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(1.0);
-//	auto r = SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying();
+	auto r = SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying();
+	
     return true;
 }
 
